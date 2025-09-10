@@ -1,0 +1,21 @@
+version: "3.8"
+services:
+  backend:
+    image: seu-usuario/backend-app:latest
+    networks:
+      - app-net
+    deploy:
+      replicas: 5
+
+  frontend:
+    image: seu-usuario/frontend-app:latest
+    networks:
+      - app-net
+    ports:
+      - "8080:8080"
+    deploy:
+      replicas: 3
+
+networks:
+  app-net:
+    driver: overlay
